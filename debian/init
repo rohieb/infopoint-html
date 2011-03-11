@@ -3,8 +3,8 @@
 # Provides:          infopoint-html
 # Required-Start:    $local_fs $network $syslog
 # Required-Stop:     $local_fs $network $syslog
-# Default-Start:     3 4 5
-# Default-Stop:      0 1 2 6
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
 # X-Interactive:     true
 # Short-Description: Start/stop InfoPoint HTML viewer
 ### END INIT INFO
@@ -12,8 +12,13 @@
 # TODO stopping: get PID and write it to /var/run
 # TODO what if another X server is running?
 
-if [ "$1" != "start" ]; then exit 0; fi;
-
-# start app from ~/.xinitrc
-su vertretungsplan -c xinit &
+case "$1" in
+  start)
+    # start app from ~/.xinitrc
+    su vertretungsplan -c xinit &
+    ;;
+  stop|restart|force-reload)
+    echo "not yet implemented."
+    ;;
+esac;
 

@@ -1,7 +1,5 @@
 #!/bin/sh -e
 
-# workaround for dh_installinit
-update-rc.d -f infopoint-html remove >/dev/null
 userdel -r infopoint-html
 #DEBHELPER#
 

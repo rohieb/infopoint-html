@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 # TODO also use debconf for this
 if [ -z "`grep 'allowed_users=anybody' /etc/X11/Xwrapper.config`" ]; then
   echo "allowed_users=anybody" >> /etc/X11/Xwrapper.config
@@ -14,8 +14,4 @@ if [ -f ~infopoint-html/.xinitrc ]; then
 fi;
 ln -s /usr/share/infopoint-html/xinitrc ~infopoint-html/.xinitrc
 
-# workaroud for not restarting firefox on upgrade (instead of dh_installinit)
-if [ -x "/etc/init.d/infopoint-html" ]; then
-  update-rc.d -f infopoint-html defaults > /dev/null
-fi;
 #DEBHELPER#

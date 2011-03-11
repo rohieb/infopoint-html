@@ -7,7 +7,7 @@ Standards-Version: 3.7.2
 
 Package: infopoint-html
 Architecture: all
-Depends: xorg, login, xulrunner-1.9.1
+Depends: ${shlibs:Depends}, ${misc:Depends}, xserver-xorg, xinit, xulrunner-1.9.1
 Provides: vertretungsplan-anzeige
 Replaces: vertretungsplan-anzeige
 Conflicts: vertretungsplan-anzeige
