@@ -1,4 +1,11 @@
 #!/bin/sh
 # simple wrapper for xulrunner
+
 . /etc/default/infopoint-html
-xulrunner-stub /usr/share/infopoint-html/application.ini "$URL"
+
+if [ "$#" -gt 0 ]; then
+  xulrunner-1.9.1 /usr/share/infopoint-html/application.ini $@;
+else
+  xulrunner-1.9.1 /usr/share/infopoint-html/application.ini "$URL";
+fi
+
