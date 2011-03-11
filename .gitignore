@@ -1,4 +1,5 @@
 debian/files
 debian/infopoint-html
-debian/*debhelper.log
-debian/*substvars
+debian/*.debhelper
+debian/*.log
+debian/*.substvars
