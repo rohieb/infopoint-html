@@ -1,9 +1,11 @@
 #!/bin/sh
+# TODO also use debconf for this
 if [ -z "`grep 'allowed_users=anybody' /etc/X11/Xwrapper.config`" ]; then
   echo "allowed_users=anybody" >> /etc/X11/Xwrapper.config
 fi;
 
 if [ -z "`grep infopoint-html /etc/passwd`" ]; then
+# TODO need a shell?
   useradd -ms /bin/bash infopoint-html
 fi;
 

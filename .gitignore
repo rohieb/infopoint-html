@@ -1,2 +1,4 @@
-debian/vertretungsplan-anzeige
 debian/files
+debian/infopoint-html
+debian/*debhelper.log
+debian/*substvars
