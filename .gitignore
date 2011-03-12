@@ -1,3 +1,4 @@
+.*.swp
 debian/files
 debian/infopoint-html
 debian/*.debhelper

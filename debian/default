@@ -1,4 +1,11 @@
 # Default options for infopoint-html
-# Here you can change the URL that is displayed on system startup.
+
+# Should infopoint-html run at startup? (yes|no)
+START="no"
+
+# The URL that is displayed. 
+# URLs can be anything supported by Mozilla, like http[s], ftp, file, about, 
+# gopher, data, view-source, javascript
+# See http://en.wikipedia.org/wiki/URI_scheme for examples 
 URL="about:blank"
 
