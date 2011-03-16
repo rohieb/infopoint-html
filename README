@@ -1,0 +1,26 @@
+Infopoint HTML Viewer
+=====================
+
+This is a XUL application that views a web page in full screen. It can be
+useful for machines whose only purpose it is to show fixed information (like 
+stock graphs, a network monitor, news, etc.) while the are running.
+
+
+Dependencies
+------------
+
+Currently, you only need Mozilla XULRunner >= 1.9.1. Older versions may work,
+but are not tested. 
+You can download it from https://developer.mozilla.org/en/XULRunner#Releases
+
+
+Installation
+------------
+
+There is no configure script or Makefile at the moment. You can put the 
+contents of the `src/xul/` folder to any location you like, and start the
+application from there, giving the URL to display on the command line:
+
+    cp -R src/xul /usr/local/share/infopoint-html
+    xulrunner /usr/local/share/infopoint-html/application.ini http://google.com
+
