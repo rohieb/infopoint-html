@@ -5,18 +5,19 @@
   id="viewer" windowtype="viewer" title="Infopoint HTML View" hidechrome="true">
 
   <hbox flex="1">
-  <iframe id="contentview" src="http://google.com" flex="1" />
+  <iframe id="contentview" src="chrome://infopointhtmlviewer/content/default.html" flex="1" />
   </hbox>
   <script>
     // load URI given on command line
+    var content = document.getElementById("contentview");
     var cmdLine = window.arguments[0].QueryInterface(Components.interfaces.
       nsICommandLine);
-    var uri = "about:blank";
+    var uri = content.getAttribute("src");
+
     if(cmdLine.length > 0) {
       uri = cmdLine.getArgument(0);
     }
 
-    var content = document.getElementById("contentview");
     if(content != null) {
       content.setAttribute("src", uri);
     }
