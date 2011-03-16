@@ -1,4 +1,4 @@
-#!/bin/sh -e
+#!/bin/sh
 ### BEGIN INIT INFO
 # Provides:          infopoint-html
 # Required-Start:    $local_fs $network $syslog
@@ -19,9 +19,8 @@
 # Depend on lsb-base (>= 3.0-6) to ensure that this file is present.
 . /lib/lsb/init-functions
 
-# TODO stopping: get PID and write it to /var/run
-# TODO what if another X server is running?
-
+PIDFILE=/var/run/infopoint-html.pid
+LOGFILE=/var/log/infopoint-html.log
 case "$1" in
   start)
     if [ "$START" != "yes" ]; then
@@ -29,11 +28,57 @@ case "$1" in
       return 0;
     fi
 
-    # start app from ~/.xinitrc
-    su infopoint-html -c xinit &
+    echo -n "Starting Infopoint HTML Viewer... "
+
+    if [ -e $PIDFILE ]; then
+      log_warning_msg "already started. If this is not the case, delete the file $PIDFILE.";
+      return 1;
+    fi;
+
+    # look for next free display
+    for DISP in `seq 0 9`; do
+      [ ! -e /tmp/.X11-unix/X$DISP ] && break;
+    done;
+
+    # start app from ~infopoint-html/.xinitrc
+    su infopoint-html -c "xinit -- :$DISP" > $LOGFILE 2>&1 &
+    echo $! > $PIDFILE
+
+    log_success_msg "done"
     ;;
-  stop|restart|force-reload)
-    echo "not yet implemented."
+
+  stop)
+    echo -n "Stopping Infopoint HTML Viewer... "
+
+    if [ -z "`pidof -x infopoint-html-viewer`" ]; then
+      # nothing to do
+      echo "already stopped."
+      return 0;
+    fi;
+
+    if [ ! -f $PIDFILE ]; then
+      log_failure_msg "Error: cannot read $PIDFILE.";
+      return 1;
+    fi;
+
+    PID=`cat $PIDFILE`
+    # wait for program to exit
+    for n in `seq 0 10`; do
+      kill $SIG $PID
+      sleep 1
+      if [ -z "`pidof -x infopoint-html-viewer`" ]; then
+        log_success_msg "done"
+        rm -f $PIDFILE
+        return 0;
+      fi;
+      if [ "$n" -gt 5 ]; then SIG="-9"; fi;
+    done;
+
+    log_failure_msg " Could not kill process $PID!"
+    ;;
+
+  restart|force-reload)
+    /etc/init.d/infopoint-html stop && /etc/init.d/infopoint-html start
     ;;
 esac;
 
