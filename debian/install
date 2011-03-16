@@ -1,3 +1,3 @@
-src/*                 usr/share/infopoint-html
-xinitrc               usr/share/infopoint-html
-infopoint-html-viewer usr/bin
+src/xul/*                 usr/share/infopoint-html
+src/infopoint-html-viewer usr/bin
+xinitrc                   usr/share/infopoint-html
