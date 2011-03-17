@@ -6,6 +6,6 @@
 if [ "$#" -gt 0 ]; then
   xulrunner-1.9.1 /usr/share/infopoint-html/application.ini $@;
 else
-  xulrunner-1.9.1 /usr/share/infopoint-html/application.ini "$URL";
+  xulrunner-1.9.1 /usr/share/infopoint-html/application.ini $URL;
 fi
 
