@@ -1,8 +1,8 @@
 # Default options for infopoint-html
 
-# Should infopoint-html run at startup? (yes|no)
+# Should infopoint-html start at system boot? (yes|no)
 # Default: no
-START="no"
+AUTOSTART="no"
 
 # The URL that is displayed. 
 # URLs can be anything supported by Mozilla, like http[s], ftp, file, about, 

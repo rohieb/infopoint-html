@@ -23,7 +23,7 @@ PIDFILE=/var/run/infopoint-html.pid
 LOGFILE=/var/log/infopoint-html.log
 case "$1" in
   start)
-    if [ "$START" != "yes" ]; then
+    if [ "$AUTOSTART" != "yes" ]; then
       log_warning_msg "Not starting infopoint-html, it is disabled in /etc/default/infopoint-html";
       return 0;
     fi
