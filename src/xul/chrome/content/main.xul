@@ -2,27 +2,43 @@
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
 <?xml-stylesheet href="main.css" type="text/css"?>
 <window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-  id="viewer" windowtype="viewer" title="Infopoint HTML View" hidechrome="true">
+  id="viewer" windowtype="viewer" title="Infopoint HTML View"
+  onload="init();" hidechrome="true">
+
+  <script>
+    var g_url = "";
+    function init() {
+      // load URI given on command line
+      var content = document.getElementById("contentview");
+      var cmdLine = window.arguments[0].QueryInterface(Components.interfaces.
+        nsICommandLine);
+      g_url = content.getAttribute("src");
+
+      if(cmdLine.length > 0) {
+        g_url = cmdLine.getArgument(0);
+      }
+
+      if(content != null) {
+        content.setAttribute("src", g_url);
+      }
+      window.resizeTo(screen.width, screen.height);
+    }
+
+    function reloadPage() {
+      var content = document.getElementById("contentview");
+      if(content != null) {
+        content.reload();
+      }
+    }
+  </script>
+
+  <keyset>
+    <key id="reload-key" keycode="VK_F5" oncommand="reloadPage()"/>
+  </keyset>
 
   <hbox flex="1">
-  <iframe id="contentview" src="chrome://infopointhtmlviewer/content/default.html" flex="1" />
+    <browser id="contentview" flex="1"
+      src="chrome://infopointhtmlviewer/content/default.html" />
   </hbox>
-  <script>
-    // load URI given on command line
-    var content = document.getElementById("contentview");
-    var cmdLine = window.arguments[0].QueryInterface(Components.interfaces.
-      nsICommandLine);
-    var uri = content.getAttribute("src");
-
-    if(cmdLine.length > 0) {
-      uri = cmdLine.getArgument(0);
-    }
-
-    if(content != null) {
-      content.setAttribute("src", uri);
-    }
-
-    window.resizeTo(screen.width, screen.height);
-  </script>
 </window>
 
