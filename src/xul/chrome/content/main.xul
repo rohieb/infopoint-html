@@ -5,7 +5,7 @@
   id="viewer" windowtype="viewer" title="Infopoint HTML View"
   onload="init();" hidechrome="true">
 
-  <script>
+  <script><![CDATA[
     var g_url = "";
     function init() {
       // load URI given on command line
@@ -18,8 +18,9 @@
         g_url = cmdLine.getArgument(0);
       }
 
-      if(content != null) {
+      if(content != null && content.contentWindow != null) {
         content.setAttribute("src", g_url);
+        content.contentWindow.focus();
       }
       window.resizeTo(screen.width, screen.height);
     }
@@ -30,7 +31,7 @@
         content.reload();
       }
     }
-  </script>
+  ]]></script>
 
   <keyset>
     <key id="reload-key" keycode="VK_F5" oncommand="reloadPage()"/>
