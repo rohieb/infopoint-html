@@ -1,0 +1,14 @@
+#!/bin/sh -e
+
+# workaround for dh_installinit
+update-rc.d -f infopoint-html remove >/dev/null
+userdel -r infopoint-html
+#DEBHELPER#
+
+if [ "$1" = "--purge" ]; then
+  echo 
+  echo This package did following things on installation:
+  echo '- it put "allowed_users=anybody" into /etc/X11/Xwrapper.config'
+  echo If you do not need this things anymore, you can now safely remove them.
+  echo
+fi;

@@ -1,0 +1,19 @@
+#!/bin/sh
+if [ -z "`grep 'allowed_users=anybody' /etc/X11/Xwrapper.config`" ]; then
+  echo "allowed_users=anybody" >> /etc/X11/Xwrapper.config
+fi;
+
+if [ -z "`grep infopoint-html /etc/passwd`" ]; then
+  useradd -ms /bin/bash infopoint-html
+fi;
+
+if [ -f ~infopoint-html/.xinitrc ]; then
+  rm -f ~infopoint-html/.xinitrc;
+fi;
+ln -s /usr/share/infopoint-html/xinitrc ~infopoint-html/.xinitrc
+
+# workaroud for not restarting firefox on upgrade (instead of dh_installinit)
+if [ -x "/etc/init.d/infopoint-html" ]; then
+  update-rc.d -f infopoint-html defaults > /dev/null
+fi;
+#DEBHELPER#

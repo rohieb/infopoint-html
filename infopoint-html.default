@@ -1,0 +1,4 @@
+# Default options for infopoint-html
+# Here you can change the URL that is displayed on system startup.
+URL="about:blank"
+

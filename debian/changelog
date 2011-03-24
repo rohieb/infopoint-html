@@ -1,0 +1,8 @@
+infopoint-html (0.1.0) unstable; urgency=low
+
+  * renamed vertretungsplan-anzeige to infopoint-html
+  * ported to xulrunner version, no Firefox or Iceweasel needed
+  * changed Maintainer to Roland Hieber <rohieb@rohieb.name>
+  * a cron rule to stop the system is not part of this package anymore
+
+ -- Roland Hieber <rohieb@rohieb.name>  Fri, 11 Mar 2011 05:07:14 +0100

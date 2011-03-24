@@ -1,0 +1,4 @@
+#!/bin/sh
+# simple wrapper for xulrunner
+. /etc/default/infopoint-html
+xulrunner /usr/share/infopoint-html/application.ini "$URL"
