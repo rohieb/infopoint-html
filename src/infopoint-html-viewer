@@ -1,7 +1,9 @@
 #!/bin/sh
 # simple wrapper for xulrunner
 
-. /etc/default/infopoint-html
+if [ -r /etc/default/infopoint-html ]; then
+  . /etc/default/infopoint-html;
+fi;
 
 if [ "$#" -gt 0 ]; then
   xulrunner-1.9.1 /usr/share/infopoint-html/application.ini $@;
