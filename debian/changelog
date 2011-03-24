@@ -1,3 +1,20 @@
+infopoint-html (1:0.3-1) unstable; urgency=low
+
+  * moving to non-native version scheme again
+  * new upstream version 0.3:
+    - reload page when F5 is pressed
+    - enable Ctrl-Alt-Del for killing the X server in xinitrc
+    - focus web site on startup, so you do not have to click it first
+    - fix that the browser element does not throw an Exception at start
+  * add git-buildpackage configuration
+  * add Vcs-Git and Vcs-Browser headers
+  * Suggest openssh-server, x11vnc, ntp instead of Recommending them
+  * x-window-manager is somewhat opponent to the purpose this package,
+    removing it from Recommends
+  * check for read access before including /etc/default/infopoint-html
+
+ -- Roland Hieber <rohieb@rohieb.name>  Thu, 24 Mar 2011 02:53:55 +0100
+
 infopoint-html (1:0.2.0.1) unstable; urgency=low
 
   * new upstream version
