@@ -1,0 +1,27 @@
+infopoint-html (1:0.2.0.1) unstable; urgency=low
+
+  * new upstream version
+  * add AUTOSTART config and set AUTOSTART="no" in /etc/default
+  * add default page that is displayed if no URL is configured in
+    /etc/default/ or given on the command line
+  * finished init script
+    - start on first available X display
+    - write PID to pidfile
+    - implemented stop, restart, force-reload
+    - send xinit output to logfile
+  * set empty URL in /etc/default so the instruction page is shown on 
+    first start
+  * only delete user on purge; otherwise dpkg --purge would try to 
+    delete the user twice, and complain
+  * tidy up xulrunner updates on purge
+
+ -- Roland Hieber <rohieb@rohieb.name>  Thu, 17 Mar 2011 06:42:13 +0100
+
+infopoint-html (1:0.1.0.1) unstable; urgency=low
+
+  * renamed vertretungsplan-anzeige to infopoint-html
+  * ported to xulrunner version, no Firefox or Iceweasel needed
+  * changed Maintainer to Roland Hieber <rohieb@rohieb.name>
+  * a cron rule to stop the system is not part of this package anymore
+
+ -- Roland Hieber <rohieb@rohieb.name>  Fri, 11 Mar 2011 05:07:14 +0100

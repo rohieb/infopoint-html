@@ -1,0 +1,8 @@
+#!/bin/sh -e
+
+if [ "$1" = "--purge" ]; then
+  # tidy up xulrunner updates
+  rm -rf /usr/share/infopoint-html/updates/;
+fi;
+
+#DEBHELPER#

@@ -1,0 +1,12 @@
+#!/bin/sh -e
+
+#DEBHELPER#
+
+if [ "$1" = "--purge" ]; then
+  userdel -r infopoint-html
+  echo 
+  echo This package did following things on installation:
+  echo '- it put "allowed_users=anybody" into /etc/X11/Xwrapper.config'
+  echo If you do not need this things anymore, you can now safely remove them.
+  echo
+fi;
