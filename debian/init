@@ -10,7 +10,9 @@
 ### END INIT INFO
 
 # default config
-. /etc/default/infopoint-html
+if [ -r /etc/default/infopoint-html ]; then
+  . /etc/default/infopoint-html;
+fi;
 
 # Load the VERBOSE setting and other rcS variables
 . /lib/init/vars.sh
