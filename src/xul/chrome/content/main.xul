@@ -14,7 +14,7 @@
         nsICommandLine);
       g_url = content.getAttribute("src");
 
-      if(cmdLine.length > 0) {
+      if(cmdLine != null && cmdLine.length > 0) {
         g_url = cmdLine.getArgument(0);
       }
 
@@ -38,7 +38,7 @@
   </keyset>
 
   <hbox flex="1">
-    <browser id="contentview" flex="1"
+    <browser id="contentview" flex="1" disablehistory="false"
       src="chrome://infopointhtmlviewer/content/default.html" />
   </hbox>
 </window>
