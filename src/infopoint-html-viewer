@@ -5,9 +5,18 @@ if [ -r /etc/default/infopoint-html ]; then
   . /etc/default/infopoint-html;
 fi;
 
+# look for xulrunner
+XULRUNNER=
+for xrapp in "xulrunner xulrunner-1.9 xulrunner-1.9.1 xulrunner-1.9.2"; do
+  if [ -n "`which $xrapp`" ]; then
+    XULRUNNER=`which $xrapp`
+    break
+  fi
+done
+
 if [ "$#" -gt 0 ]; then
-  xulrunner-1.9.1 /usr/share/infopoint-html/application.ini $@;
+  $XULRUNNER /usr/share/infopoint-html/application.ini $@;
 else
-  xulrunner-1.9.1 /usr/share/infopoint-html/application.ini $URL;
+  $XULRUNNER /usr/share/infopoint-html/application.ini $URL;
 fi
 
