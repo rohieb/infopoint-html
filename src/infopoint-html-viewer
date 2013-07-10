@@ -15,9 +15,25 @@ for xrapp in xulrunner xulrunner-`seq -s '.0 xulrunner-' 21 -1 10`.0 \
   fi
 done
 
+# look if we were installed somewhere or run locally
+BASEDIR=`dirname $0`
+APPDIR=
+for dir in /usr/local/share/infopoint-html /usr/share/infopoint-html \
+           $BASEDIR/xul; do
+  if [ -f "$dir/application.ini" ]; then
+    APPDIR=$dir
+    break
+  fi
+done
+if [ -z "$APPDIR" ] ; then
+	echo "Something went wrong, I could not find my application.ini :(";
+	exit 1
+fi
+
+echo starting with $XULRUNNER from $APPDIR...
 if [ "$#" -gt 0 ]; then
-  $XULRUNNER /usr/share/infopoint-html/application.ini $@;
+  $XULRUNNER $APPDIR/application.ini $@;
 else
-  $XULRUNNER /usr/share/infopoint-html/application.ini $URL;
+  $XULRUNNER $APPDIR/application.ini $URL;
 fi
 
