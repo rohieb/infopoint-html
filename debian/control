@@ -10,9 +10,12 @@ Vcs-Browser: https://github.com/rohieb/infopoint-html
 
 Package: infopoint-html
 Architecture: all
-Depends: ${misc:Depends}, xserver-xorg, xinit, x11-xserver-utils, 
-  xulrunner | xulrunner-1.9 | xulrunner-1.9.1 | xulrunner-1.9.2,
-  lsb-base (>= 3.0-6)
+Depends: ${misc:Depends}, xserver-xorg, xinit, x11-xserver-utils,
+ xulrunner | xulrunner-1.9 | xulrunner-1.9.1 | xulrunner-1.9.2 |
+ xulrunner-10.0 | xulrunner-11.0 | xulrunner-12.0 | xulrunner-13.0 |
+ xulrunner-14.0 | xulrunner-15.0 | xulrunner-16.0 | xulrunner-17.0 |
+ xulrunner-18.0 | xulrunner-19.0 | xulrunner-20.0 | xulrunner-21.0,
+ lsb-base (>= 3.0-6)
 Suggests: openssh-server, x11vnc, ntp
 Provides: vertretungsplan-anzeige
 Replaces: vertretungsplan-anzeige
