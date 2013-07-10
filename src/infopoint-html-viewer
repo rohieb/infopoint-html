@@ -5,18 +5,35 @@ if [ -r /etc/default/infopoint-html ]; then
   . /etc/default/infopoint-html;
 fi;
 
-# look for xulrunner
+# look for xulrunner, newest first
 XULRUNNER=
-for xrapp in "xulrunner xulrunner-1.9 xulrunner-1.9.1 xulrunner-1.9.2 xulrunner-10.0"; do
+for xrapp in xulrunner xulrunner-`seq -s '.0 xulrunner-' 21 -1 10`.0 \
+             xulrunner-1.9.2 xulrunner-1.9.1 xulrunner-1.9; do
   if [ -n "`which $xrapp`" ]; then
     XULRUNNER=`which $xrapp`
     break
   fi
 done
 
+# look if we were installed somewhere or run locally
+BASEDIR=`dirname $0`
+APPDIR=
+for dir in /usr/local/share/infopoint-html /usr/share/infopoint-html \
+           $BASEDIR/xul; do
+  if [ -f "$dir/application.ini" ]; then
+    APPDIR=$dir
+    break
+  fi
+done
+if [ -z "$APPDIR" ] ; then
+	echo "Something went wrong, I could not find my application.ini :(";
+	exit 1
+fi
+
+echo starting with $XULRUNNER from $APPDIR...
 if [ "$#" -gt 0 ]; then
-  $XULRUNNER /usr/share/infopoint-html/application.ini $@;
+  $XULRUNNER $APPDIR/application.ini $@;
 else
-  $XULRUNNER /usr/share/infopoint-html/application.ini $URL;
+  $XULRUNNER $APPDIR/application.ini $URL;
 fi
 
