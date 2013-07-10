@@ -5,9 +5,10 @@ if [ -r /etc/default/infopoint-html ]; then
   . /etc/default/infopoint-html;
 fi;
 
-# look for xulrunner
+# look for xulrunner, newest first
 XULRUNNER=
-for xrapp in "xulrunner xulrunner-1.9 xulrunner-1.9.1 xulrunner-1.9.2 xulrunner-10.0"; do
+for xrapp in xulrunner xulrunner-`seq -s '.0 xulrunner-' 21 -1 10`.0 \
+             xulrunner-1.9.2 xulrunner-1.9.1 xulrunner-1.9; do
   if [ -n "`which $xrapp`" ]; then
     XULRUNNER=`which $xrapp`
     break
