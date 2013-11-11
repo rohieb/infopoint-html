@@ -9,6 +9,11 @@ if [ -z "`grep infopoint-html /etc/passwd`" ]; then
   useradd -ms /bin/bash infopoint-html
 fi;
 
+# create home if it does not exist (users might delete it)
+if [ ! -d ~infopoint-html ]; then
+	mkdir -p ~infopoint-html
+fi
+
 if [ -f ~infopoint-html/.xinitrc ]; then
   rm -f ~infopoint-html/.xinitrc;
 fi;
