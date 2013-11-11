@@ -14,6 +14,10 @@ for xrapp in xulrunner xulrunner-`seq -s '.0 xulrunner-' 25 -1 10`.0 \
     break
   fi
 done
+if [ -z "$XULRUNNER" ]; then
+	echo "Could not find a supported xulrunner instance."
+	exit 1
+fi
 
 # look if we were installed somewhere or run locally
 BASEDIR=`dirname $0`
