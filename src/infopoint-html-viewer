@@ -7,13 +7,17 @@ fi;
 
 # look for xulrunner, newest first
 XULRUNNER=
-for xrapp in xulrunner xulrunner-`seq -s '.0 xulrunner-' 21 -1 10`.0 \
+for xrapp in xulrunner xulrunner-`seq -s '.0 xulrunner-' 25 -1 10`.0 \
              xulrunner-1.9.2 xulrunner-1.9.1 xulrunner-1.9; do
   if [ -n "`which $xrapp`" ]; then
     XULRUNNER=`which $xrapp`
     break
   fi
 done
+if [ -z "$XULRUNNER" ]; then
+	echo "Could not find a supported xulrunner instance."
+	exit 1
+fi
 
 # look if we were installed somewhere or run locally
 BASEDIR=`dirname $0`
