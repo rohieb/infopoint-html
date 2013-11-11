@@ -34,7 +34,7 @@ case "$1" in
 
     if [ -e $PIDFILE ]; then
       log_warning_msg "already started. If this is not the case, delete the file $PIDFILE.";
-      return 1;
+      return 0;
     fi;
 
     # look for next free display
