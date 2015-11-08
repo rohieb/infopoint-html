@@ -1,0 +1,13 @@
+[Unit]
+Description=A Infopoint Display that shows HTML pages in fullscreen
+Requires=network.target
+
+[Service]
+ExecStart=/usr/bin/xinit /bin/sh /usr/bin/infopoint-html-viewer
+Restart=always
+RestartSec=5
+User=1000
+Group=1000
+
+[Install]
+WantedBy=multi-user.target
