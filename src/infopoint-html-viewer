@@ -6,6 +6,12 @@ if [ -z "$DISPLAY" ]; then
   exit 1
 fi
 
+# we want the screen to be on always
+xset -dpms
+xset s noblank
+xset s off
+setxkbmap -option terminate:ctrl_alt_bksp
+
 if [ -r /etc/default/infopoint-html ]; then
   . /etc/default/infopoint-html;
 fi;
