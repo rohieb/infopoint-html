@@ -1,6 +1,11 @@
 #!/bin/sh
 # simple wrapper for xulrunner
 
+if [ -z "$DISPLAY" ]; then
+  echo "Error: no X server found. (\$DISPLAY is not set)"
+  exit 1
+fi
+
 if [ -r /etc/default/infopoint-html ]; then
   . /etc/default/infopoint-html;
 fi;
