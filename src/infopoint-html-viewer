@@ -26,6 +26,16 @@ for xrapp in xulrunner xulrunner-`seq -s '.0 xulrunner-' 25 -1 10`.0 \
   fi
 done
 
+# newer xulrunners are integrated with Firefox instead
+if [ -z "$XULRUNNER" ]; then
+  for xrapp in firefox iceweasel; do
+    if [ -n "`which $xrapp`" ]; then
+      XULRUNNER="$xrapp -app"
+      break
+    fi
+  done
+fi
+
 if [ -z "$XULRUNNER" ]; then
   echo "Could not find a supported xulrunner instance."
   exit 1
