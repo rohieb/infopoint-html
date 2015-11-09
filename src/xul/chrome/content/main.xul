@@ -39,7 +39,7 @@
 
   <hbox flex="1">
     <browser id="contentview" flex="1" disablehistory="false"
-      src="chrome://infopointhtmlviewer/content/default.html" />
+      src="chrome://infopointhtml/content/default.html" />
   </hbox>
 </window>
 
